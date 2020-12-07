@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(kimera_vio_ros)
 
 find_package(catkin_simple REQUIRED)
+find_package(Torch REQUIRED)
 
 ### System Dependencies
 find_package(Boost REQUIRED COMPONENTS
@@ -32,6 +33,10 @@ cs_add_library(${PROJECT_NAME}
   src/RosVisualizer.cpp
   src/utils/UtilsRos.cpp
 )
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 target_link_libraries(${PROJECT_NAME} kimera_vio)
 
 cs_add_executable(${PROJECT_NAME}_node
@@ -43,6 +48,13 @@ catkin_add_gtest(testKimeraVioRos
   test/testKimeraVioRos.cpp
 )
 target_link_libraries(testKimeraVioRos ${PROJECT_NAME})
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET ${PROJECT_NAME}_node PROPERTY CXX_STANDARD 14)
+set_property(TARGET ${PROJECT_NAME}_node PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET testKimeraVioRos PROPERTY CXX_STANDARD 14)
+set_property(TARGET testKimeraVioRos PROPERTY CXX_STANDARD_REQUIRED ON)
 
 cs_install()
 

@@ -2,6 +2,9 @@
   <arg name="dataset_name" value="Euroc"/>
   <arg name="verbosity"    default="0" />
 
+  <!-- VLAD testing -->
+  <arg name="use_netvlad" />
+
   <!-- Set online to true if you use rosbag play or sensor stream -->
   <arg name="online" default="true" />
   <!-- Set use_sim_time to true if you use rosbag with clock argument -->

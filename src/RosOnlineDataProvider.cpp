@@ -161,7 +161,7 @@ RosOnlineDataProvider::RosOnlineDataProvider(const VioParams& vio_params)
       *it_, "left_cam/image_raw", kMaxImagesQueueSize);
   right_img_subscriber_.subscribe(
       *it_, "right_cam/image_raw", kMaxImagesQueueSize);
-  static constexpr size_t kMaxImageSynchronizerQueueSize = 10u;
+  static constexpr size_t kMaxImageSynchronizerQueueSize = 20u;
   sync_img_ = VIO::make_unique<message_filters::Synchronizer<sync_pol_img>>(
       sync_pol_img(kMaxImageSynchronizerQueueSize),
       left_img_subscriber_,

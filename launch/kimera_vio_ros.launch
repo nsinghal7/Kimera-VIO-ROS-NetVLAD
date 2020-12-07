@@ -35,6 +35,8 @@
   <!-- Specify the absolute path to the vocabulary file. -->
   <!-- This is usually in the VIO directory (VIO/vocabulary/ORBvoc.yml). -->
   <arg name="path_to_vocab" default="$(find kimera_vio)/vocabulary/ORBvoc.yml"/>
+  <arg name="netvlad_path" default="$(find kimera_vio)/models/traced_pytorch_netvlad.pt" />
+  <arg name="use_netvlad" default="false" />
 
   <!-- Subscribed Topics -->
   <arg name="left_cam_topic"                    default="/cam0/image_raw"/>
@@ -69,6 +71,8 @@
         output="screen" ns="kimera_vio_ros"
         args="--use_lcd=$(arg use_lcd)
               --vocabulary_path=$(arg path_to_vocab)
+              --netvlad_path=$(arg netvlad_path)
+              --use_netvlad=$(arg use_netvlad)
               --flagfile=$(arg params_folder)/flags/Mesher.flags
               --flagfile=$(arg params_folder)/flags/VioBackEnd.flags
               --flagfile=$(arg params_folder)/flags/RegularVioBackEnd.flags

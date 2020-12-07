@@ -114,8 +114,8 @@ class RosOnlineDataProvider : public RosDataProviderInterface {
 
   // Declare Approx Synchronization Policy and Synchronizer for stereo images.
   // TODO(Toni): should be exact sync policy
-  typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image,
-                                                          sensor_msgs::Image>
+  typedef message_filters::sync_policies::ExactTime<sensor_msgs::Image,
+                                                    sensor_msgs::Image>
       sync_pol_img;
   typedef message_filters::sync_policies::
       ApproximateTime<sensor_msgs::CameraInfo, sensor_msgs::CameraInfo>
